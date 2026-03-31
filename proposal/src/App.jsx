@@ -22,14 +22,16 @@ const App = () => {
       {step === 1 && (
         <div>
           <p>Name</p>
-          <input className="inp"
+          <input
+            className="inp"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
 
           <p>email</p>
-          <input className="inp"
+          <input
+            className="inp"
             type="email"
             value={mail}
             onChange={(e) => setMail(e.target.value)}
@@ -37,41 +39,52 @@ const App = () => {
           {!mail.includes("@") && <p>Enter a valid Email</p>}
 
           <p>Company Name</p>
-          <input className="inp"
+          <input
+            className="inp"
             type="text"
             value={compname}
             onChange={(e) => setCompname(e.target.value)}
           />
 
-          <button className="btn" disabled={!sub} onClick={handle}>
+          <button
+            className="btn"
+            disabled={!sub}
+            style={{ backgroundColor: !sub ? "gray" : "blue" }}
+            onClick={handle}
+          >
             next
           </button>
+          <p>{step} of 3</p>
         </div>
       )}
       {step === 2 && (
         <div>
           <p>Service Input Name</p>
-          <input className="inp"
+          <input
+            className="inp"
             type="text"
             value={service}
             onChange={(e) => setService(e.target.value)}
           />
 
           <p>Quantity</p>
-          <input className="inp"
+          <input
+            className="inp"
             type="number"
             value={quant}
             onChange={(e) => setQuant(e.target.value)}
           />
 
           <p>Price</p>
-          <input className="inp"
+          <input
+            className="inp"
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
 
-          <button className="btn"
+          <button
+            className="btn"
             onClick={() => {
               setPress([...press, { service, price, quant }]);
 
@@ -80,6 +93,7 @@ const App = () => {
               setQuant("");
             }}
             disabled={!not}
+            style={{ backgroundColor: !not ? "gray" : "blue" }}
           >
             {" "}
             Add
@@ -91,14 +105,28 @@ const App = () => {
                 service: {item.service} <br />
                 Quantity: {item.quant} <br />
                 Price: {item.price}
+                <button onClick={() => setPress(press.filter((item, i) => i !== index ))}>Delete</button>
               </li>
             ))}
           </ul>
 
-          <button className="btn" onClick={before}>before</button>
-          <button className="btn" onClick={after} disabled={press.length < 1}>
+          <button
+            className="btn"
+            style={{ backgroundColor: !sub ? "gray" : "blue" }}
+            onClick={before}
+          >
+            before
+          </button>
+          <button
+            className="btn"
+            style={{ backgroundColor: press.length < 1 ? "gray" : "blue" }}
+            onClick={after}
+            disabled={press.length < 1}
+          >
             next
           </button>
+
+          <p>{step} of 3</p>
         </div>
       )}
 
@@ -126,8 +154,20 @@ const App = () => {
             )}
           </p>
 
-          <button className="btn" onClick={handle}>before</button>
-          <button className="btn" onClick={con}>submit</button>
+          <button
+            className="btn"
+            style={{ backgroundColor: "blue" }}
+            onClick={handle}
+          >
+            before
+          </button>
+          <button
+            className="btn"
+            style={{ backgroundColor: "blue" }}
+            onClick={con}
+          >
+            submit
+          </button>
         </div>
       )}
     </div>
