@@ -35,4 +35,4 @@ npm run dev
 - Drag and drop with dnd-kit (DndContext, useDraggable, useDroppable)
 - Derived state for search filtering
 - Modal edit pattern with editingId
-- localStorage save/load with loaded flag pattern
+- localStorage save/load with loaded flag patterngit

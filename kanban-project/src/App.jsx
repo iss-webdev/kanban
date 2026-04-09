@@ -78,7 +78,7 @@ const App = () => {
   const validation =
     form.name.length >= 2 &&
     form.title.length >= 2 &&
-    form.dealValue !== Number &&
+    form.dealValue !== "" &&
     form.priority !== "" &&
     form.dueDate !== Number;
 
@@ -339,26 +339,26 @@ const App = () => {
         </Column>
 
         <p>Contacted</p>
-        <Column id="contact" onClick={handle}>
+        <Column id="contact" >
           {filtered
-            .filter((txt) => txt.column === "contact")
-            .map((int) => (
-              <Card id={int.id} key={int.id}>
-                title: {int.title} <br />
-                <br /> company:{int.company}
+            .filter((contacte) => contacte.column === "contact")
+            .map((contactMap) => (
+              <Card id={contactMap.id} key={contactMap.id}>
+                title: {contactMap.title} <br />
+                <br /> company:{contactMap.company}
                 <br />
-                <br /> deal value: {int.dealValue}
+                <br /> deal value: {contactMap.dealValue}
                 <br />
-                <br /> priority: {int.priority}
+                <br /> priority: {contactMap.priority}
                 <br />
-                <br /> due date: {int.dueDate}
+                <br /> due date: {contactMap.dueDate}
                 <br />
-                <br /> assignee: {int.assignee}
+                <br /> assignee: {contactMap.assignee}
                 <button
                   onClick={() =>
                     setArr(
-                      filtered.map((items) =>
-                        items.id === int.id
+                      arr.map((items) =>
+                        items.id === contactMap.id
                           ? { ...items, column: "inprogress" }
                           : items,
                       ),
@@ -369,7 +369,7 @@ const App = () => {
                 </button>
                 <button
                   onClick={() =>
-                    setArr(filtered.filter((lead) => lead.id !== int.id))
+                    setArr(arr.filter((lead) => lead.id !== contactMap.id))
                   }
                 >
                   Delete
@@ -377,7 +377,7 @@ const App = () => {
                 <button
                   onClick={() => {
                     setModal(true);
-                    setEditingId(int.id);
+                    setEditingId(contactMap.id);
                   }}
                 >
                   Edit
@@ -407,7 +407,7 @@ const App = () => {
                 <button
                   onClick={() =>
                     setArr(
-                      filtered.map((items) =>
+                      arr.map((items) =>
                         items.id === inprog.id
                           ? { ...items, column: "proposed" }
                           : items,
@@ -419,7 +419,7 @@ const App = () => {
                 </button>
                 <button
                   onClick={() =>
-                    setArr(filtered.filter((dte) => dte.id !== inprog.id))
+                    setArr(arr.filter((dte) => dte.id !== inprog.id))
                   }
                 >
                   Delete
@@ -439,7 +439,7 @@ const App = () => {
         <p>Proposal Sent</p>
         <Column id="proposed">
           {filtered
-            .filter((pros) => pros.column === "proposed")
+            .filter((proposeFilter) => proposeFilter.column === "proposed")
             .map((proposal) => (
               <Card id={proposal.id} key={proposal.id}>
                 title: {proposal.title}
@@ -459,7 +459,7 @@ const App = () => {
                 <button
                   onClick={() =>
                     setArr(
-                      filtered.map((txts) =>
+                      arr.map((txts) =>
                         txts.id === proposal.id
                           ? { ...txts, column: "closed" }
                           : txts,
@@ -471,7 +471,7 @@ const App = () => {
                 </button>
                 <button
                   onClick={() =>
-                    setArr(filtered.filter((dt) => dt.id !== proposal.id))
+                    setArr(arr.filter((dt) => dt.id !== proposal.id))
                   }
                 >
                   Delete
@@ -491,23 +491,23 @@ const App = () => {
         <p>Closed Won</p>
         <Column id="closed">
           {filtered
-            .filter((goms) => goms.column === "closed")
-            .map((its) => (
-              <Card id={its.id} key={its.id}>
-                title: {its.title}
+            .filter((closedFilter) => closedFilter.column === "closed")
+            .map((item) => (
+              <Card id={item.id} key={item.id}>
+                title: {item.title}
                 <br />
-                <br /> company:{its.company}
+                <br /> company:{item.company}
                 <br />
-                <br /> deal value: {its.dealValue} <br />
+                <br /> deal value: {item.dealValue} <br />
                 <br />
-                priority: {its.priority} <br />
+                priority: {item.priority} <br />
                 <br />
-                due date: {its.dueDate}
+                due date: {item.dueDate}
                 <br />
-                <br /> assignee: {its.assignee}
+                <br /> assignee: {item.assignee}
                 <button
                   onClick={() =>
-                    setArr(filtered.filter((dl) => dl.id !== its.id))
+                    setArr(arr.filter((dl) => dl.id !== item.id))
                   }
                 >
                   Delete
@@ -515,7 +515,7 @@ const App = () => {
                 <button
                   onClick={() => {
                     setModal(true);
-                    setEditingId(its.id);
+                    setEditingId(item.id);
                   }}
                 >
                   Edit
