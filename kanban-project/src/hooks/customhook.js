@@ -28,9 +28,9 @@ export const useKanban = () => {
   useEffect(() => {
     const save = localStorage.getItem("kanban");
     if (save) {
-      const dat = JSON.parse(save);
-      if (dat.formInfo) setFormInfo(dat.formInfo);
-      if (dat.array) setArray(dat.array);
+      const data = JSON.parse(save);
+      if (data.formInfo) setFormInfo(data.formInfo);
+      if (data.array) setArray(data.array);
     }
     setLoad(true);
   }, []);
