@@ -1,6 +1,6 @@
     import React from "react";
 
-    const Customerinfo = ({
+    const CustomerInfo = ({
     formInfo,
     setFormInfo,
     add,
@@ -97,4 +97,4 @@
     );
     };
 
-    export default Customerinfo;
+    export default CustomerInfo;

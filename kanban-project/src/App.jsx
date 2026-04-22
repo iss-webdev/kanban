@@ -4,7 +4,7 @@ import Inprogress from "./components/Inprogress";
 import Leads from "./components/Leads";
 import Modal from "./components/Modal";
 import Proposal from "./components/Proposal";
-import CustomerInfo from "./components/Customerinfo";
+import CustomerInfo from "./components/CustomerInfo";
 import Closed from "./components/Closed";
 
 const App = () => {
